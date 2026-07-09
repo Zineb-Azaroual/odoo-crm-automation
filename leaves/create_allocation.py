@@ -8,6 +8,11 @@ def create_allocation(employee_id, holiday_status_id,number_of_days, notes='') :
         'notes' : notes
     }])
     print(f"Allocation ceated successufully for the employee's id : {employee_id}")
+
+    # ← Approuver l'allocation immédiatement
+    execute('hr.leave.allocation', 'action_approve', [[allocation_id]])
+    print(f"Allocation {allocation_id} approuvée !")
+
     return allocation_id
 
 
